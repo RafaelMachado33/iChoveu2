@@ -119,9 +119,8 @@ export function handleSearch(event) {
 
   searchCities(searchValue)
     .then((cidades) => {
-      promisse.all(cidades.map((cidade) => getWeatherByCity(cidade.url)))
-        .then((data) => {
-          console.log('data = ', data);
-        });
+      return Promise.all(cidades.map((cidade) => getWeatherByCity(cidade.url)))
+    }).then((data) => {
+      console.log('data = ', data);
     }).catch((error) => error.message);
 }
