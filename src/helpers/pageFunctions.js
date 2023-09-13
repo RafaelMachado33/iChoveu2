@@ -1,4 +1,4 @@
-import { searchCities } from './weatherAPI';
+import { getWeatherByCity, searchCities } from './weatherAPI';
 
 /**
  * Cria um elemento HTML com as informações passadas
@@ -116,6 +116,12 @@ export function handleSearch(event) {
 
   const searchInput = document.getElementById('search-input');
   const searchValue = searchInput.value;
-  searchCities(searchValue);
-  // seu código aqui
+
+  searchCities(searchValue)
+    .then((cidades) => {
+      promisse.all(cidades.map((cidade) => getWeatherByCity(cidade.url)))
+        .then((data) => {
+          console.log('data = ', data);
+        });
+    }).catch((error) => error.message);
 }

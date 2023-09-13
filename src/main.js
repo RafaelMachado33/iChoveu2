@@ -1,4 +1,5 @@
 import { handleSearch } from './helpers/pageFunctions';
+// import { getWeatherByCity, searchCities } from './helpers/weatherAPI';
 import './style.css';
 
 document.getElementById('search-form')
