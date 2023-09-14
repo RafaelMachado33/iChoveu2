@@ -124,3 +124,4 @@ export function handleSearch(event) {
       console.log('data = ', data);
     }).catch((error) => error.message);
 }
+

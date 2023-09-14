@@ -8,7 +8,7 @@ export const searchCities = (term) => {
       if (data.length === 0) {
         window.alert('Nenhuma cidade encontrada');
       }
-      console.log(data.current.temp_c);
+      //console.log(data.current.temp_c);
       return data;
     });
 };
