@@ -119,9 +119,8 @@ export function handleSearch(event) {
 
   searchCities(searchValue)
     .then((cidades) => {
-      return Promise.all(cidades.map((cidade) => getWeatherByCity(cidade.url)))
+      return Promise.all(cidades.map((cidade) => getWeatherByCity(cidade.url)));
     }).then((data) => {
       console.log('data = ', data);
     }).catch((error) => error.message);
 }
-

@@ -4,11 +4,11 @@ export const searchCities = (term) => {
   return fetch(`http://api.weatherapi.com/v1/search.json?lang=pt&key=${meuToken}&q=${term}`)
     .then((response) => response.json())
     .then((data) => {
-      //console.log(data.current.temp_c);
+      // console.log(data.current.temp_c);
       if (data.length === 0) {
         window.alert('Nenhuma cidade encontrada');
       }
-      //console.log(data.current.temp_c);
+      // console.log(data.current.temp_c);
       return data;
     });
 };
