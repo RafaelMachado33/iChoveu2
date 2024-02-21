@@ -1,5 +1,7 @@
 import { getWeatherByCity, searchCities } from './weatherAPI';
 
+const listaCidades = document.querySelector('#cities');
+
 /**
  * Cria um elemento HTML com as informações passadas
  */
@@ -76,8 +78,9 @@ export function showForecast(forecastList) {
 /**
  * Recebe um objeto com as informações de uma cidade e retorna um elemento HTML
  */
+
 export function createCityElement(cityInfo) {
-  const { name, country, temp, condition, icon /* , url */ } = cityInfo;
+  const [{ name, country, temp, condition, icon, forecast /* , url */ }] = cityInfo;
 
   const cityElement = createElement('li', 'city');
 
@@ -87,12 +90,28 @@ export function createCityElement(cityInfo) {
   headingElement.appendChild(nameElement);
   headingElement.appendChild(countryElement);
 
-  const tempElement = createElement('p', 'city-temp', `${temp}º`);
+  const tempElement = createElement('p', 'city-temp', `${temp}º C`);
   const conditionElement = createElement('p', 'city-condition', condition);
-
+  const buttonElement = createElement('button', 'citys-button', 'Ver previsão');
   const tempContainer = createElement('div', 'city-temp-container');
   tempContainer.appendChild(conditionElement);
   tempContainer.appendChild(tempElement);
+  tempContainer.appendChild(buttonElement);
+  console.log(forecast);
+
+  buttonElement.addEventListener('click', (e) => {
+    e.preventDefault();
+    const arrayForecast = [];
+    for (let index = 0; index < forecast.length; index += 1) {
+      arrayForecast.push({ date: forecast[index].date,
+        maxTemp: forecast[index].day.maxtemp_c,
+        minTemp: forecast[index].day.mintemp_c,
+        condition,
+        icon });
+    }
+    // console.log(arrayForecast);
+    showForecast(arrayForecast);
+  });
 
   const iconElement = createElement('img', 'condition-icon');
   iconElement.src = icon.replace('64x64', '128x128');
@@ -104,6 +123,7 @@ export function createCityElement(cityInfo) {
   cityElement.appendChild(headingElement);
   cityElement.appendChild(infoContainer);
 
+  listaCidades.appendChild(cityElement);
   return cityElement;
 }
 
@@ -122,5 +142,6 @@ export function handleSearch(event) {
       return Promise.all(cidades.map((cidade) => getWeatherByCity(cidade.url)));
     }).then((data) => {
       console.log('data = ', data);
+      createCityElement(data);
     }).catch((error) => error.message);
 }

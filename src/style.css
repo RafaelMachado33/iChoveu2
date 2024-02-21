@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+
+.city-country{
+  font-size: 22px;
+}
 body {
   position: relative;
 }
@@ -69,7 +73,12 @@ ul {
   gap: 30px;
   flex-wrap: wrap;
 }
-
+.citys-button{
+  height: 35px;
+  width: 150px;
+  border-radius: 20px;
+  margin: auto;
+}
 .city {
   width: 370px;
   height: 370px;
@@ -80,6 +89,9 @@ ul {
   display: flex;
   align-items: center;
   flex-flow: column;
+}
+.city-condition{
+  font-size: 18px;
 }
 
 .city-name {
@@ -103,8 +115,9 @@ ul {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 15px;
+  padding: 10px;
   flex-grow: 1;
+  flex-direction: column-reverse;
 }
 
 .city-temp-container {
@@ -117,7 +130,7 @@ ul {
 
 .city-temp {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 35px;
 }
 
 .city-forecast-button {
