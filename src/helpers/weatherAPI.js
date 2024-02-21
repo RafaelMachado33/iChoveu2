@@ -1,4 +1,4 @@
-const meuToken = import.meta.env.VITE_TOKEN;
+const meuToken = import.meta.env.VITE_TOKEN || process.env.VITE_TOKEN;
 
 export const searchCities = (term) => {
   return fetch(`http://api.weatherapi.com/v1/search.json?lang=pt&key=${meuToken}&q=${term}`)
