@@ -1,7 +1,7 @@
 const meuToken = import.meta.env.VITE_TOKEN || process.env.VITE_TOKEN;
 
 export const searchCities = (term) => {
-  return fetch(`http://api.weatherapi.com/v1/search.json?lang=pt&key=${meuToken}&q=${term}`)
+  return fetch(`https://api.weatherapi.com/v1/search.json?lang=pt&key=${meuToken}&q=${term}`)
     .then((response) => response.json())
     .then((data) => {
       if (data.length === 0) {
@@ -12,7 +12,7 @@ export const searchCities = (term) => {
 };
 
 export const getWeatherByCity = (cityURL) => {
-  return fetch(`http://api.weatherapi.com/v1/forecast.json?lang=pt&key=${meuToken}&q=${cityURL}&days=7`)
+  return fetch(`https://api.weatherapi.com/v1/forecast.json?lang=pt&key=${meuToken}&q=${cityURL}&days=7`)
     .then((response) => response.json())
     .then((data) => {
       const objeto = {
