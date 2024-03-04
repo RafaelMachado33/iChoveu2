@@ -254,4 +254,17 @@ ul {
   #forecast-container{
     margin-top: 300px;
   }
+
+  #search-input{
+    max-width: 170x;
+    font-size: 12px;
+  }
+  header img {
+    margin-left:-50px;
+    width: 60px;
+  }
+.city{
+  height: 420px;
 }
+}
+
